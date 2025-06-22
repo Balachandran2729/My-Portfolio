@@ -1,103 +1,68 @@
-import Image from "next/image";
+"use client"
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const animationData = require("@/animation/Animation - 1750141948196.json");
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex-col font-[family-name:var(--font-geist-sans)] w-full h-screen">
+      
+      {/* Responsive layout for heading and animation */}
+      <div className="flex flex-col md:flex-row z-1 md:mt-[-60px] items-center md:items-start justify-center md:justify-start">
+        <div className="flex flex-col text-white md:ms-40 md:mt-50 items-center md:items-start mt-10">
+          <p className="font-bold text-l">Welcome to </p>
+          <h1 className="font-bold text-5xl md:text-7xl ps-0 md:ps-5">Balachandran</h1>
+          <p className="font-bold text-l">Portfolio</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="mt-10 md:mt-20 md:ms-20">
+          <Lottie
+            animationData={animationData}
+            loop={true}
+            className="w-60 h-60 md:w-96 md:h-96"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        </div>
+      </div>
+
+      {/* Animated text */}
+      <div className="flex justify-center items-center mt-5">
+        <motion.p
+          className="font-bold text-accent text-xl text-center"
+          animate={{ scale: [1, 1.25, 1] }}
+          transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          click here to know about me
+        </motion.p>
+      </div>
+
+      {/* Responsive links layout */}
+      <div className="flex flex-col md:flex-row justify-center items-center mt-10 z-0 gap-5 md:gap-20 text-center">
+        {[
+          { href: "/about", label: "About Me" },
+          { href: "/skills", label: "Skills" },
+          { href: "/pro", label: "Projects" },
+          { href: "/contact", label: "Contact" },
+        ].map((item, i) => (
+          <div className="relative group" key={i}>
+            <Link
+              href={item.href}
+              className="font-bold px-5 py-2 
+                text-black bg-white rounded-full 
+                md:text-accent md:bg-transparent md:rounded-none 
+                flex items-center gap-2 md:text-white
+                md:hover:bg-white md:hover:text-black md:hover:rounded-full 
+                transition duration-150"
+            >
+              {item.label}
+              <span className="transform transition-transform duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
