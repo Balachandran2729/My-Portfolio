@@ -13,7 +13,7 @@ export default function About() {
           <Lottie animationData={aboutAnimation} loop={true} />
         </div>
         <p className="text-black font-semibold text-center mb-8">
-          Hi! I'm Balachandar,I am a motivated and detail-oriented developer with a strong passion for building practical and user-focused digital solutions. I have experience working on real-time systems and full-stack applications, combining problem-solving skills with a clear understanding of user needs.My approach to development is centered on delivering efficient, reliable, and meaningful solutions. I enjoy taking on new challenges, learning continuously, and contributing to projects that create a positive impact.
+          Hi! I&apos;m Balachandar, I am a motivated and detail-oriented developer with a strong passion for building practical and user-focused digital solutions. I have experience working on real-time systems and full-stack applications, combining problem-solving skills with a clear understanding of user needs.My approach to development is centered on delivering efficient, reliable, and meaningful solutions. I enjoy taking on new challenges, learning continuously, and contributing to projects that create a positive impact.
         </p>
         <div className="w-full flex flex-col items-center mt-4">
           <Link
